@@ -1,6 +1,6 @@
 # Benthic Quadrant Corrector
 
-A specialized image processing tool designed for correcting and enhancing benthic quadrant images captured with GoPro cameras underwater. This tool performs lens distortion correction, perspective correction, and color enhancement specifically optimized for marine research applications.
+A image processing tool designed for correcting and enhancing benthic quadrant images captured with GoPro cameras underwater. This tool performs lens distortion correction, perspective correction, and color enhancement specifically optimized for marine research applications.
 
 ## 🌊 What it does
 
