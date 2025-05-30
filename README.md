@@ -13,7 +13,7 @@ This tool processes underwater GoPro images of benthic quadrants by:
 - **Color Enhancement**: Restores red tones lost in underwater photography
 - **Batch Processing**: Processes multiple images efficiently with consistent settings
 
-## 🔬 Perfect for Marine Research
+## made for marine research
 
 Designed specifically for:
 - Benthic habitat monitoring
@@ -97,9 +97,7 @@ Each processed image produces:
 - **Resolution**: 2000x2000 pixels (perfect square)
 - **Quality**: 98% JPEG compression
 - **Naming**: `[original_name]_Corrected.jpg`
-- **Color Space**: Enhanced BGR with restored red channel
 - **Geometric**: Corrected perspective and lens distortion
-
 
 ### Perspective Correction
 - 4-point perspective transformation
@@ -111,7 +109,7 @@ Each processed image produces:
 - **Red Channel Boost**: Compensates for red light absorption underwater
 - **Saturation Enhancement**: Restores color vibrancy lost in aquatic environments
 
-## 🤝 Contributing
+## Contributing
 
 This tool was developed for marine research applications. Contributions are welcome, especially:
 - Additional color correction algorithms
@@ -119,18 +117,18 @@ This tool was developed for marine research applications. Contributions are welc
 - Automated quadrant size detection
 - Integration with marine analysis software
 
-## 📝 License
+## License
 
 MIT License
 
-## 👨‍💻 Author
+##  Author
 
 Created by Levi Lina for benthic marine research applications.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - OpenCV community for computer vision tools
-- Marine research community for testing and feedback
+- Marine research community and my friends for testing and feedback
 - Wageningen University & Research for calibration standards and the opportunity to build this application
 
 ---
