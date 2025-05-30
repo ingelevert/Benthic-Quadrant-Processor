@@ -1,5 +1,5 @@
-import cv2
-import numpy as np
+import cv2 # type: ignore
+import numpy as np # type: ignore
 import os
 from calibration import CameraCalibrator
 from detection import QuadrantDetector
@@ -69,13 +69,13 @@ class GoProQuadrantProcessor:
                 # Try to create the folder 
                 try:
                     os.makedirs(output_folder, exist_ok=True)
-                    print(f"✅ Output folder ready: {output_folder}")
+                    print(f" Output folder ready: {output_folder}")
                     break
                 except Exception as e:
-                    print(f"❌ Cannot create output folder: {e}")
+                    print(f" Cannot create output folder: {e}")
                     print("Please enter a valid path")
             else:
-                print("❌ Please enter a folder path")
+                print(" Please enter a folder path")
         
         # Get red levels
         print("\nColor Enhancement Settings:")
@@ -85,11 +85,11 @@ class GoProQuadrantProcessor:
         print(f"\n" + "="*50)
         print("BATCH PROCESSING SUMMARY")
         print("="*50)
-        print(f"📁 Input folder:  {input_folder}")
-        print(f"📤 Output folder: {output_folder}")
-        print(f"🎨 Red level:     {red_level}/5")
+        print(f" Input folder:  {input_folder}")
+        print(f" Output folder: {output_folder}")
+        print(f" Red level:     {red_level}/5")
         print(f"📸 Images found:  {len(image_files)}")
-        print("\n💡 During processing:")
+        print("\n During processing:")
         print("   • SPACE = Process current image")
         print("   • N = Skip current image") 
         print("   • ESC = Cancel entire batch")
@@ -109,28 +109,28 @@ class GoProQuadrantProcessor:
         if image is None:
             return False
             
-        print(f"✅ Image loaded: {image.shape[1]}x{image.shape[0]} pixels")
+        print(f" Image loaded: {image.shape[1]}x{image.shape[0]} pixels")
         undistorted = self.calibrator.undistort_image(image)
-        print("✅ Lens distortion corrected")
+        print(" Lens distortion corrected")
         
-        # Detect or manually select corners
+        # Detect or manually select corners (i mostly manually select)
         corners = self.detector.detect_with_fallback(undistorted, self.ui)
         if corners is None or isinstance(corners, str):
             return False
         
-        print("✅ Corners selected")
+        print(" Corners selected")
         
         # Process and save
-        print("🔧 Correcting perspective to 2000x2000...")
+        print(" Correcting perspective to 2000x2000...")
         corrected = self.processor.correct_perspective(undistorted, corners, output_size=2000)
-        print("🌈 Enhancing colors and correcting chromatic aberration...")
+        print(" Enhancing colors and correcting chromatic aberration...")
         enhanced = self.processor.enhance_colors(corrected, red_level)
         
         base_name = os.path.splitext(os.path.basename(image_path))[0]
         output_path = f"{base_name}_Corrected.jpg"
         
-        # Save with high quality
+        # Save
         cv2.imwrite(output_path, enhanced, [cv2.IMWRITE_JPEG_QUALITY, 95])
         
-        print(f"✅ Saved: {output_path} (2000x2000, 95% quality)")
+        print(f" Saved: {output_path} (2000x2000, 95% quality)")
         return True
